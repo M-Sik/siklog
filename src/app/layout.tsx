@@ -1,3 +1,4 @@
+import Header from '@/components/headers/Header';
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
 
@@ -12,7 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={openSans.className}>
       <body className="h-full">
-        <main className="max-w-screen-md px-6 mx-auto">{children}</main>
+        <Header />
+        <main className="max-w-screen-md px-6 mx-auto mt-10">{children}</main>
       </body>
     </html>
   );
