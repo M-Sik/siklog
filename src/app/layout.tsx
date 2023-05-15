@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={openSans.className}>
       <body className="h-full">
-        <main>{children}</main>
+        <main className="max-w-screen-md px-6 mx-auto">{children}</main>
       </body>
     </html>
   );
