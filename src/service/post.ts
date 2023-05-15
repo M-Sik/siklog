@@ -3,6 +3,7 @@ export async function addPost(
   subtitle: string,
   createdAt: string,
   pw: string,
+  category: string,
   markdown: string,
 ) {
   const response = await fetch(`${process.env.NEXT_PUBLIC__API_URL}/api/post`, {
@@ -12,6 +13,7 @@ export async function addPost(
       subtitle,
       createdAt,
       pw,
+      category,
       markdown,
     }),
   });
