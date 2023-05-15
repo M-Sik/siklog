@@ -5,7 +5,18 @@ import Link from 'next/link';
 
 import React, { useEffect, useState } from 'react';
 
-const navs = ['Home', 'Blog'];
+const navs = [
+  {
+    name: 'Home',
+    label: 'Home link',
+    path: '/',
+  },
+  {
+    name: 'Blog',
+    label: 'Blog link',
+    path: '/blog',
+  },
+];
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -29,9 +40,14 @@ export default function Header() {
       <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between bg-white">
         <b className="text-yellow-400 text-3xl">Siklog</b>
         <nav className="flex gap-6 text-xl">
-          {navs.map((nav) => (
-            <Link href={'/'} key={nav}>
-              {nav}
+          {navs.map(({ name, label, path }) => (
+            <Link
+              href={path}
+              key={name}
+              aria-label={label}
+              className="hover:text-yellow-400 hover:scale-125 hover:font-bold transition-all duration-500"
+            >
+              {name}
             </Link>
           ))}
         </nav>
