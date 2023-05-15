@@ -23,7 +23,7 @@ export default function Header() {
 
   const handleScroll = useThrottle(() => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-    console.log(scrollPosition);
+    // console.log(scrollPosition);
   }, 20);
 
   useEffect(() => {
@@ -38,7 +38,13 @@ export default function Header() {
       }`}
     >
       <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between items-center bg-white">
-        <b className="text-yellow-400 text-3xl">Siklog</b>
+        <Link
+          href={'/'}
+          aria-label="main page link"
+          className="text-yellow-400 text-3xl cursor-pointer font-bold"
+        >
+          Siklog
+        </Link>
         <nav className="flex gap-6 text-xl">
           {navs.map(({ name, label, path }) => (
             <Link
