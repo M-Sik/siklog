@@ -1,8 +1,10 @@
+import ProfileCard from '@/components/cards/ProfileCard';
+
 export default async function Home() {
   return (
     <section>
-      <div className="bg-red-300 h-screen">f</div>
-      <div className="bg-red-300 h-screen">d</div>
+      <h2 className="font-bold text-4xl">😎 Dev Sik</h2>
+      <ProfileCard />
     </section>
   );
 }
