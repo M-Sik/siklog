@@ -37,7 +37,7 @@ export default function Header() {
         scrollPosition > 50 && 'bg-white shadow-lg'
       }`}
     >
-      <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between bg-white">
+      <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between items-center bg-white">
         <b className="text-yellow-400 text-3xl">Siklog</b>
         <nav className="flex gap-6 text-xl">
           {navs.map(({ name, label, path }) => (
