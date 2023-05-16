@@ -27,9 +27,11 @@ export default function AddPostPage() {
     if (!markdown) return;
 
     addPost(title, subtitle, creatdAt, pw, category, markdown)
-      .then((res) => alert('등록에 성공하였습니다.'))
+      .then((res) => {
+        alert('등록에 성공하였습니다.');
+        resetInputs();
+      })
       .catch((err) => console.log('여기로오면 레전드 => ', err));
-    resetInputs();
   };
   const resetInputs = () => {
     setTitle('');

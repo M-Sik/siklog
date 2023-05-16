@@ -37,8 +37,6 @@ export default function Header() {
         scrollPosition > 50 && 'bg-white shadow-lg'
       }`}
     >
-      <div>{process.env.NEXT_PUBLIC__API_URL}</div>
-
       <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between items-center bg-white">
         <Link
           href={'/'}
