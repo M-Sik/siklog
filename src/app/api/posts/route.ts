@@ -5,10 +5,11 @@ import { MongoClient } from 'mongodb';
 export const dynamic = 'force-dynamic';
 
 const uri = process.env.MONGODB_URI as string;
-const client = new MongoClient(uri);
 
 export async function GET(req: NextRequest) {
+  let client: MongoClient | undefined;
   try {
+    const client = new MongoClient(uri);
     await client.connect();
     // console.log('------- DB 커텍트 시작 -------');
     const db = client.db(process.env.MONGODB_NAME);
@@ -21,7 +22,8 @@ export async function GET(req: NextRequest) {
     console.log(error);
     return new Response(JSON.stringify(error), { status: 500 });
   } finally {
-    await client.close();
-    // console.log('------- DB 커텍트 종료 -------');
+    if (client) {
+      await client.close();
+    }
   }
 }

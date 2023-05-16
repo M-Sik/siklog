@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI as string;
-const client = new MongoClient(uri);
 
 export async function POST(req: NextRequest) {
   const { title, subtitle, createdAt, pw, category, markdown } = await req.json();
@@ -10,7 +9,10 @@ export async function POST(req: NextRequest) {
   if (title === '' || subtitle === '' || createdAt === '' || pw === '' || markdown === '')
     return new Response('Bad Request', { status: 400 });
 
+  let client: MongoClient | undefined;
+
   try {
+    const client = new MongoClient(uri);
     await client.connect();
     console.log('------- DB 커텍트 시작 -------');
     const db = client.db(process.env.MONGODB_NAME);
@@ -30,7 +32,8 @@ export async function POST(req: NextRequest) {
     console.log(error);
     return new Response(JSON.stringify(error), { status: 500 });
   } finally {
-    await client.close();
-    console.log('------- DB 커텍트 종료 -------');
+    if (client) {
+      await client.close();
+    }
   }
 }

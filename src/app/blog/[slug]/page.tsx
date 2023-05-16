@@ -27,7 +27,9 @@ export default async function BlogPage({ params: { slug } }: IProps) {
 
   return (
     <article className="rounded-2xl overflow-hidden bg-gray-200 shadow-lg m-4">
-      <div>{title}</div>
+      <div>
+        {title} {subtitle}
+      </div>
       {/* <PostContent post={post} /> */}
     </article>
   );
