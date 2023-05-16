@@ -6,7 +6,7 @@ import TistoryIcon from '../icons/TistoryIcon';
 
 export default function ProfileCard() {
   return (
-    <section className="flex gap-6 justify-center items-center my-12">
+    <section className="flex flex-col md:flex-row gap-6 justify-center items-center my-12">
       <article>
         <Image
           src={ProfileImg}
