@@ -30,5 +30,15 @@ export async function recentPosts(): Promise<PostInfo[]> {
     // next: { revalidate: 0 },
   });
   const data = await response.json();
+  if (Object.keys(data).length === 0) return [];
+  return data;
+}
+
+export async function getPostDetail(postId: string): Promise<PostInfo> {
+  const response = await fetch(`${process.env.SERVER_API_URL}/api/post/${postId}`, {
+    method: 'GET',
+    cache: 'no-store',
+  });
+  const data = await response.json();
   return data;
 }
