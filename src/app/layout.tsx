@@ -44,6 +44,16 @@ export const metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary',
+    title: 'siklog',
+    description: 'siklog | 프론트엔드 개발자 김명식 개발 블로그입니다.',
+    images: [
+      {
+        url: 'https://user-images.githubusercontent.com/77043973/236410475-876c5054-8ef3-47cb-8c26-e731e323855e.jpeg',
+      },
+    ],
+  },
   creator: 'MyeongSik Kim',
   authors: [{ name: 'devSik' }],
   publisher: 'devSik',
