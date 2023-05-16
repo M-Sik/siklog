@@ -2,7 +2,7 @@
 
 import { addPost } from '@/service/post';
 import dynamic from 'next/dynamic';
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import { categorys } from '@/data/categorys';
@@ -19,14 +19,15 @@ export default function AddPostPage() {
   const [pw, setPw] = useState('');
   const [category, setCategory] = useState('');
   const [markdown, setMarkdown] = useState<string | undefined>('');
+  const [keywords, setKeywords] = useState<string[]>(['', '', '', '', '', '', '', '', '', '']);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // console.log(title, subtitle, creatdAt, pw, category, markdown);
+    // console.log(title, subtitle, creatdAt, pw, category, markdown, keywords);
 
     if (!markdown) return;
 
-    addPost(title, subtitle, creatdAt, pw, category, markdown)
+    addPost(title, subtitle, creatdAt, pw, category, markdown, keywords)
       .then((res) => {
         alert('등록에 성공하였습니다.');
         resetInputs();
@@ -39,6 +40,11 @@ export default function AddPostPage() {
     setCreatdAt('');
     setPw('');
     setMarkdown('');
+  };
+  const handleKeyword = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const copyKeywords = [...keywords];
+    copyKeywords[index] = e.target.value;
+    setKeywords(copyKeywords);
   };
 
   return (
@@ -82,14 +88,25 @@ export default function AddPostPage() {
           name="categorys"
           className="my-4 border border-yellow-400 p-4"
         >
-          {categorys.map(({ title, keyword }) => (
-            <option key={title} value={keyword}>
+          {categorys.map(({ title, category }) => (
+            <option key={title} value={category}>
               {title}
             </option>
           ))}
         </select>
         <div>
           <MDEditor height={600} value={markdown} onChange={setMarkdown} />
+        </div>
+        <div className="mt-4 grid grid-cols-6">
+          {keywords.map((keyword, index) => (
+            <input
+              key={index}
+              value={keywords[index]}
+              onChange={(e) => handleKeyword(e, index)}
+              type="text"
+              placeholder="#"
+            />
+          ))}
         </div>
         <button className="bg-yellow-400 w-full mt-6 py-4 text-xl rounded-2xl">등록</button>
       </form>

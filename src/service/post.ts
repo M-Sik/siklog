@@ -7,6 +7,7 @@ export async function addPost(
   pw: string,
   category: string,
   markdown: string,
+  keywords: string[],
 ) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/post`, {
     method: 'POST',
@@ -17,6 +18,7 @@ export async function addPost(
       pw,
       category,
       markdown,
+      keywords,
     }),
   });
   const data = await response.json();

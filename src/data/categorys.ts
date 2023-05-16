@@ -1,7 +1,7 @@
-export const categorys: { title: string; keyword: string }[] = [
-  { title: 'All', keyword: '' },
-  { title: 'JavaScript', keyword: 'javascript' },
-  { title: 'Web', keyword: 'web' },
-  { title: 'Coding Test', keyword: 'codingtest' },
-  { title: 'Error 정리', keyword: 'error' },
+export const categorys: { title: string; category: string }[] = [
+  { title: 'All', category: '' },
+  { title: 'JavaScript', category: 'javascript' },
+  { title: 'Web', category: 'web' },
+  { title: 'Coding Test', category: 'codingtest' },
+  { title: 'Error 정리', category: 'error' },
 ];

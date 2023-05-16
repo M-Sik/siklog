@@ -4,7 +4,7 @@ import { MongoClient } from 'mongodb';
 const uri = process.env.MONGODB_URI as string;
 
 export async function POST(req: NextRequest) {
-  const { title, subtitle, createdAt, pw, category, markdown } = await req.json();
+  const { title, subtitle, createdAt, pw, category, markdown, keywords } = await req.json();
 
   if (title === '' || subtitle === '' || createdAt === '' || pw === '' || markdown === '')
     return new Response('Bad Request', { status: 400 });
@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
       pw,
       category,
       markdown,
+      keywords,
     });
 
     // console.log('faeffa2131231231 => ', result);

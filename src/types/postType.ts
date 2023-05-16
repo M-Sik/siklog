@@ -6,4 +6,5 @@ export type PostInfo = {
   pw: string;
   category: string;
   markdown: string;
+  keywords: string[];
 };
