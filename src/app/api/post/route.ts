@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   try {
     const client = new MongoClient(uri);
     await client.connect();
-    console.log('------- DB 커텍트 시작 -------');
+    // console.log('------- DB 커텍트 시작 -------');
     const db = client.db(process.env.MONGODB_NAME);
     const collection = db.collection('posts');
     const result = await collection.insertOne({
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     // console.log('faeffa2131231231 => ', result);
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return new Response(JSON.stringify(error), { status: 500 });
   } finally {
     if (client) {

@@ -22,7 +22,7 @@ export async function GET(req: NextRequest, context: Context) {
     // console.log('faeffa2131231231 => ', result);
     return NextResponse.json(result);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return new Response(JSON.stringify(error), { status: 500 });
   } finally {
     if (client) {

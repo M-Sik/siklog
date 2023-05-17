@@ -20,17 +20,15 @@ export async function generateMetadata({ params: { slug } }: IProps) {
 }
 
 export default async function BlogPage({ params: { slug } }: IProps) {
-  console.log('포스트 상세정보 아이디 => ', slug);
+  // console.log('포스트 상세정보 아이디 => ', slug);
   const post = await getPostDetail(slug);
-  console.log('포스트 상세정보 조회 결과 => ', post);
+  // console.log('포스트 상세정보 조회 결과 => ', post);
   const { title, markdown, createdAt, keywords } = post;
 
   return (
     <section>
       <p className="text-gray-400 text-sm">{createdAt}</p>
       <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
-      {/* <PostContent post={post} /> */}
-      {/* <ReactMarkdown children={`${markdown}`} remarkPlugins={[remarkGfm]} /> */}
       <MarkdownViewer content={markdown} />
       <div className=" mt-16">
         <p className="text-sm text-gray-500">태그</p>
