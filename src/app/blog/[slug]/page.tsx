@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import { getPostDetail } from '@/service/post';
+import MarkdownViewer from '@/components/viewers/MarkdownViewer';
 
 interface IProps {
   params: {
@@ -23,14 +23,15 @@ export default async function BlogPage({ params: { slug } }: IProps) {
   console.log('포스트 상세정보 아이디 => ', slug);
   const post = await getPostDetail(slug);
   console.log('포스트 상세정보 조회 결과 => ', post);
-  const { title, subtitle, markdown, createdAt } = post;
+  const { title, markdown, createdAt } = post;
 
   return (
-    <article className="rounded-2xl overflow-hidden bg-gray-200 shadow-lg m-4">
-      <div>
-        {title} {subtitle}
-      </div>
+    <section>
+      <p className="text-gray-400 text-sm">{createdAt}</p>
+      <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
       {/* <PostContent post={post} /> */}
-    </article>
+      {/* <ReactMarkdown children={`${markdown}`} remarkPlugins={[remarkGfm]} /> */}
+      <MarkdownViewer content={markdown} />
+    </section>
   );
 }
