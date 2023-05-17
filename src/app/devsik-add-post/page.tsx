@@ -6,6 +6,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import { categorys } from '@/data/categorys';
+import { adminCheck } from '@/service/admin';
 // import MDEditor from '@u iw/react-md-editor';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
@@ -20,10 +21,20 @@ export default function AddPostPage() {
   const [category, setCategory] = useState('');
   const [markdown, setMarkdown] = useState<string | undefined>('');
   const [keywords, setKeywords] = useState<string[]>(['', '', '', '', '', '', '', '', '', '']);
+  const [adminPw, setAdminPw] = useState('');
+  const [adminPwCheck, setAdminPwCheck] = useState(false);
+
+  const handleAdminCheck = () => {
+    adminCheck(adminPw)
+      .then((res) => console.log('어드민 확인 결과 => ', res))
+      .catch((err) => alert(`여기서 오류? => ${err}`));
+    // 어드민 확인하는 api 설정 후 성공시 setAdminPwCheck(true)
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // console.log(title, subtitle, creatdAt, pw, category, markdown, keywords);
+    if (!adminPwCheck) return alert('관리자 비밀번호 확인을 해주세요');
 
     if (!markdown) return;
 
@@ -49,6 +60,22 @@ export default function AddPostPage() {
 
   return (
     <section className="py-6">
+      <div className="my-6 flex gap-6">
+        <input
+          type="password"
+          placeholder="관리자 비밀번호를 입력해주세요."
+          value={adminPw}
+          onChange={(e) => setAdminPw(e.target.value)}
+          className={inputStyle}
+          required
+        />
+        <button
+          onClick={handleAdminCheck}
+          className="w-[100px] mt-4 bg-yellow-400 rounded-lg text-white font-bold"
+        >
+          확인
+        </button>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
