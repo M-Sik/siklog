@@ -26,8 +26,16 @@ export default function AddPostPage() {
 
   const handleAdminCheck = () => {
     adminCheck(adminPw)
-      .then((res) => console.log('어드민 확인 결과 => ', res))
-      .catch((err) => alert(`여기서 오류? => ${err}`));
+      .then((res) => {
+        if (res) {
+          alert('비밀번호가 인증되었습니다.');
+          setAdminPwCheck(true);
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+          setAdminPwCheck(false);
+        }
+      })
+      .catch((err) => alert(`${err}`));
     // 어드민 확인하는 api 설정 후 성공시 setAdminPwCheck(true)
   };
 
