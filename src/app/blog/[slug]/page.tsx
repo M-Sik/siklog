@@ -36,7 +36,7 @@ export default async function BlogPage({ params: { slug } }: IProps) {
       <p className="text-gray-400 text-sm">{createdAt}</p>
       <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
       <MarkdownViewer content={markdown} />
-      <article className=" mt-28 flex gap-4 rounded-lg">
+      <article className=" mt-28 flex md:flex-row flex-col gap-4 rounded-lg">
         {prevPost && <AdjacentPostCard type="prev" title={prevPost.title} postId={prevPost._id} />}
         {nextPost && <AdjacentPostCard type="next" title={nextPost.title} postId={nextPost._id} />}
       </article>
