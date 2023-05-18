@@ -11,7 +11,9 @@ interface IProps {
 // slug에 따라 메타데이터를 바꾸고 싶을때에는 generateMetadata 사용
 export async function generateMetadata({ params: { slug } }: IProps) {
   // 포스트 정보 조회 api
-  const { title, subtitle, keywords } = await getPostDetail(slug);
+  const {
+    currentPost: { title, subtitle, keywords },
+  } = await getPostDetail(slug);
   return {
     title: title,
     description: subtitle,
@@ -21,9 +23,9 @@ export async function generateMetadata({ params: { slug } }: IProps) {
 
 export default async function BlogPage({ params: { slug } }: IProps) {
   // console.log('포스트 상세정보 아이디 => ', slug);
-  const post = await getPostDetail(slug);
-  // console.log('포스트 상세정보 조회 결과 => ', post);
-  const { title, markdown, createdAt, keywords } = post;
+  const { prevPost, currentPost, nextPost } = await getPostDetail(slug);
+
+  const { title, markdown, createdAt, keywords } = currentPost;
 
   return (
     <section className=" h-full">
