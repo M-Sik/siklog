@@ -38,10 +38,10 @@ export async function recentPosts(): Promise<PostInfo[]> {
 
 export async function getPostDetail(
   postId: string,
-): Promise<{ prevPost: PostInfo; currentPost: PostInfo; nextPost: PostInfo }> {
+): Promise<{ prevPost: PostInfo | null; currentPost: PostInfo; nextPost: PostInfo | null }> {
   const response = await fetch(`${process.env.SERVER_API_URL}/api/post/${postId}`, {
     method: 'GET',
-    cache: 'force-cache',
+    cache: 'no-store',
   });
   const data = await response.json();
   return data;

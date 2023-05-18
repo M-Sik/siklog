@@ -35,9 +35,9 @@ export async function GET(req: NextRequest, context: Context) {
     // console.log('게시글 상세정보 현재 게시글=> ', currentPost);
     // console.log('게시글 상세화면 다음 게시글 정보 => ', { ...nextPost[0] });
     return NextResponse.json({
-      prevPost: { ...prevPost[0] },
+      prevPost: Object.keys({ ...prevPost[0] }).length === 0 ? null : { ...prevPost[0] },
       currentPost: currentPost,
-      nextPost: { ...nextPost[0] },
+      nextPost: Object.keys({ ...nextPost[0] }).length === 0 ? null : { ...nextPost[0] },
     });
   } catch (error) {
     // console.log(error);

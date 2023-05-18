@@ -1,6 +1,7 @@
 import React from 'react';
 import { getPostDetail } from '@/service/post';
 import MarkdownViewer from '@/components/viewers/MarkdownViewer';
+import AdjacentPostCard from '@/components/cards/AdjacentPostCard';
 
 interface IProps {
   params: {
@@ -24,6 +25,9 @@ export async function generateMetadata({ params: { slug } }: IProps) {
 export default async function BlogPage({ params: { slug } }: IProps) {
   // console.log('포스트 상세정보 아이디 => ', slug);
   const { prevPost, currentPost, nextPost } = await getPostDetail(slug);
+  console.log('이전 포스트 -=> ', prevPost);
+  console.log('현재 포스트 -=> ', currentPost);
+  console.log('다음 포스트 -=> ', nextPost);
 
   const { title, markdown, createdAt, keywords } = currentPost;
 
@@ -32,20 +36,26 @@ export default async function BlogPage({ params: { slug } }: IProps) {
       <p className="text-gray-400 text-sm">{createdAt}</p>
       <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
       <MarkdownViewer content={markdown} />
-      <div className=" mt-16">
+      <article className=" mt-28 flex gap-4 rounded-lg">
+        {prevPost && <AdjacentPostCard type="prev" title={prevPost.title} postId={prevPost._id} />}
+        {nextPost && <AdjacentPostCard type="next" title={nextPost.title} postId={nextPost._id} />}
+      </article>
+      <article className=" mt-8">
         <p className="text-sm text-gray-500">태그</p>
         <div className="flex flex-wrap gap-2">
           {keywords &&
             keywords.map((keyword) => (
               <p
                 key={keyword}
-                className="text-sm text-gray-500 before:content-['#'] after:content-[',']"
+                className={`text-sm text-gray-500 ${
+                  keyword !== '' && 'before:content-["#"] after:content-[",""]'
+                } `}
               >
                 {keyword}
               </p>
             ))}
         </div>
-      </div>
+      </article>
     </section>
   );
 }
