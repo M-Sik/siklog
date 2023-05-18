@@ -58,7 +58,7 @@ export const metadata = {
   authors: [{ name: 'devSik' }],
   publisher: 'devSik',
   generator: 'Next.js',
-  viewport: 'width=device-width, initial-scale=1.0"',
+  viewport: { width: 'device-width', initialScale: 1 },
   robots: {
     index: true,
     follow: true,
@@ -71,10 +71,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={openSans.className}>
-      <body className="h-full">
+    <html lang="ko" className={`${openSans.className}`}>
+      <body>
         <Header />
-        <main className="max-w-screen-md px-6 mx-auto py-10">{children}</main>
+        <main className="w-full min-h-[calc(100vh-229px)] max-w-screen-md px-6 mx-auto py-10">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

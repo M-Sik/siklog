@@ -28,8 +28,8 @@ export async function addPost(
 export async function recentPosts(): Promise<PostInfo[]> {
   const response = await fetch(`${process.env.SERVER_API_URL}/api/posts`, {
     method: 'GET',
-    cache: 'no-store',
-    // next: { revalidate: 0 },
+    // cache: 'no-store',
+    next: { revalidate: 180 },
   });
   const data = await response.json();
   if (Object.keys(data).length === 0) return [];

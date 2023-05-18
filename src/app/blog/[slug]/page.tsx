@@ -26,7 +26,7 @@ export default async function BlogPage({ params: { slug } }: IProps) {
   const { title, markdown, createdAt, keywords } = post;
 
   return (
-    <section>
+    <section className=" h-full">
       <p className="text-gray-400 text-sm">{createdAt}</p>
       <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
       <MarkdownViewer content={markdown} />
