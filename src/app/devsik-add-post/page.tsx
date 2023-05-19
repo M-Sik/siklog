@@ -45,7 +45,6 @@ export default function AddPostPage() {
     if (!adminPwCheck) return alert('관리자 비밀번호 확인을 해주세요');
 
     if (!markdown) return;
-    // 여기 아래
     addPost(title, subtitle, creatdAt, pw, category, markdown, keywords)
       .then((res) => {
         alert('등록에 성공하였습니다.');

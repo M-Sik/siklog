@@ -5,10 +5,11 @@ import SearchInput from '@/components/inputs/SearchInput';
 import { getAllPosts } from '@/service/post';
 import React, { useState } from 'react';
 
+export const revalidate = 30;
+
 export default async function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
 
-  // 여기 아래
   const allPosts = await getAllPosts();
 
   return (
@@ -17,7 +18,6 @@ export default async function BlogsPage() {
       <div className=" my-12">
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
-      {/* 여기 아래 */}
       <PostsCard posts={allPosts} />
     </section>
   );
