@@ -54,7 +54,7 @@ export async function getPostDetail(
 ): Promise<{ prevPost: PostInfo | null; currentPost: PostInfo; nextPost: PostInfo | null }> {
   const response = await fetch(`${process.env.SERVER_API_URL}/api/post/${postId}`, {
     method: 'GET',
-    // cache: 'no-store',
+    cache: 'no-store',
   });
   const data = await response.json();
   return data;
