@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   let client: MongoClient | undefined;
 
   try {
-    const client = new MongoClient(uri);
+    client = new MongoClient(uri);
     await client.connect();
     // console.log('------- DB 커텍트 시작 -------');
     const db = client.db(process.env.MONGODB_NAME);
@@ -28,10 +28,24 @@ export async function POST(req: NextRequest) {
     });
 
     // console.log('faeffa2131231231 => ', result);
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(result, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    });
   } catch (error) {
     // console.log(error);
-    return new Response(JSON.stringify(error), { status: 500 });
+    return new Response(JSON.stringify(error), {
+      status: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    });
   } finally {
     if (client) {
       await client.close();

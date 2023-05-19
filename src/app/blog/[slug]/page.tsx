@@ -25,9 +25,9 @@ export async function generateMetadata({ params: { slug } }: IProps) {
 export default async function BlogPage({ params: { slug } }: IProps) {
   // console.log('포스트 상세정보 아이디 => ', slug);
   const { prevPost, currentPost, nextPost } = await getPostDetail(slug);
-  console.log('이전 포스트 -=> ', prevPost);
-  console.log('현재 포스트 -=> ', currentPost);
-  console.log('다음 포스트 -=> ', nextPost);
+  // console.log('이전 포스트 -=> ', prevPost);
+  // console.log('현재 포스트 -=> ', currentPost);
+  // console.log('다음 포스트 -=> ', nextPost);
 
   const { title, markdown, createdAt, keywords } = currentPost;
 

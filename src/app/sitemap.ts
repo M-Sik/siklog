@@ -8,7 +8,7 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
   const postsMap = posts.map(({ _id }) => ({
-    url: `${URL}/blog/${_id}`,
+    url: `${process.env.NEXT_PUBLIC_CLIENT_API_URL}/blog/${_id}`,
     lastModified: new Date().toISOString(),
   }));
   return [...routesMap, ...postsMap];

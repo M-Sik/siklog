@@ -34,14 +34,30 @@ export async function GET(req: NextRequest, context: Context) {
     // console.log('게시글 상세정보 이전 게시글=> ', ...prevPost);
     // console.log('게시글 상세정보 현재 게시글=> ', currentPost);
     // console.log('게시글 상세화면 다음 게시글 정보 => ', { ...nextPost[0] });
-    return NextResponse.json({
-      prevPost: Object.keys({ ...prevPost[0] }).length === 0 ? null : { ...prevPost[0] },
-      currentPost: currentPost,
-      nextPost: Object.keys({ ...nextPost[0] }).length === 0 ? null : { ...nextPost[0] },
-    });
+    return NextResponse.json(
+      {
+        prevPost: Object.keys({ ...prevPost[0] }).length === 0 ? null : { ...prevPost[0] },
+        currentPost: currentPost,
+        nextPost: Object.keys({ ...nextPost[0] }).length === 0 ? null : { ...nextPost[0] },
+      },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+      },
+    );
   } catch (error) {
     // console.log(error);
-    return new Response(JSON.stringify(error), { status: 500 });
+    return new Response(JSON.stringify(error), {
+      status: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    });
   } finally {
     if (client) {
       await client.close();
