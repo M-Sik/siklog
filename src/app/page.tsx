@@ -6,7 +6,7 @@ import { getRecentPosts } from '@/service/post';
 
 export default async function Home() {
   // 여기 아래
-  // const posts = await getRecentPosts();
+  const posts = await getRecentPosts();
 
   return (
     <section>
@@ -14,7 +14,7 @@ export default async function Home() {
       <ProfileCard />
       <h2 className="font-bold text-4xl pt-6">✏️ Recent Posts</h2>
       {/* 여기 아래 */}
-      {/* <PostsCard posts={posts} /> */}
+      <PostsCard posts={posts} />
     </section>
   );
 }

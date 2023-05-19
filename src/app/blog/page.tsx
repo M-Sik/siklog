@@ -9,7 +9,7 @@ export default async function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
 
   // 여기 아래
-  // const allPosts = await getAllPosts();
+  const allPosts = await getAllPosts();
 
   return (
     <section>
@@ -18,7 +18,7 @@ export default async function BlogsPage() {
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
       {/* 여기 아래 */}
-      {/* <PostsCard posts={allPosts} /> */}
+      <PostsCard posts={allPosts} />
     </section>
   );
 }
