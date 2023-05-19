@@ -14,12 +14,13 @@ export default function ProfileCard() {
           height={300}
           width={300}
           className=" object-contain rounded-3xl"
+          priority
         />
       </article>
       <article>
         <h3 className="font-bold text-xl">프론트엔드 개발자 김명식 입니다.</h3>
         <p className="mt-4">
-          만랩이 없는 프로그래밍이라는 게임을 즐기며 <br />
+          만렙이 없는 프로그래밍이라는 게임을 즐기며 <br />
           높은 레벨을 달성하기 위해 열심히 레벨업 하고있습니다.
         </p>
         <div className="flex gap-4 items-center mt-2">

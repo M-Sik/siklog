@@ -1,5 +1,7 @@
 import { PostInfo } from '@/types/postType';
 
+const REVALIDATE_TIME = 180;
+
 export async function addPost(
   title: string,
   subtitle: string,
@@ -25,11 +27,22 @@ export async function addPost(
   return data;
 }
 
-export async function recentPosts(): Promise<PostInfo[]> {
-  const response = await fetch(`${process.env.SERVER_API_URL}/api/posts`, {
+export async function getRecentPosts(): Promise<PostInfo[]> {
+  const response = await fetch(`${process.env.SERVER_API_URL}/api/posts/recent`, {
     method: 'GET',
     // cache: 'no-store',
-    next: { revalidate: 180 },
+    next: { revalidate: REVALIDATE_TIME },
+  });
+  const data = await response.json();
+  if (Object.keys(data).length === 0) return [];
+  return data;
+}
+
+export async function getAllPosts(): Promise<PostInfo[]> {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/posts`, {
+    method: 'GET',
+    // cache: 'no-store',
+    next: { revalidate: REVALIDATE_TIME },
   });
   const data = await response.json();
   if (Object.keys(data).length === 0) return [];
@@ -41,7 +54,7 @@ export async function getPostDetail(
 ): Promise<{ prevPost: PostInfo | null; currentPost: PostInfo; nextPost: PostInfo | null }> {
   const response = await fetch(`${process.env.SERVER_API_URL}/api/post/${postId}`, {
     method: 'GET',
-    cache: 'no-store',
+    // cache: 'no-store',
   });
   const data = await response.json();
   return data;

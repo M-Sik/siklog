@@ -1,10 +1,10 @@
-import { recentPosts } from '@/service/post';
+import { getRecentPosts } from '@/service/post';
 import { MetadataRoute } from 'next';
 
 const URL = 'http://localhost:3000';
 
 export default async function sitemap() {
-  const posts = await recentPosts();
+  const posts = await getRecentPosts();
 
   const routesMap = ['', '/blog'].map((route) => ({
     url: `${URL}${route}`,

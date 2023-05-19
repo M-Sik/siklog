@@ -12,7 +12,7 @@ export const metadata = {
   },
   description: 'siklog | 프론트엔드 개발자 김명식 개발 블로그입니다.',
   icons: {
-    icon: 'favicon.ico',
+    icon: '/favicon.ico',
   },
   keywords: [
     'siklog',

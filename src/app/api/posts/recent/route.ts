@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     // console.log('------- DB 커텍트 시작 -------');
     const db = client.db(process.env.MONGODB_NAME);
     const collection = db.collection('posts');
-    const result = await collection.find().sort({ _id: -1 }).toArray();
+    const result = await collection.find().sort({ _id: -1 }).limit(5).toArray();
 
     // console.log('faeffa2131231231 => ', result);
     return NextResponse.json(result);
