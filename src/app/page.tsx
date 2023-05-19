@@ -7,8 +7,7 @@ import { getRecentPosts } from '@/service/post';
 
 export default async function Home() {
   const posts = await getRecentPosts();
-  console.log('????');
-
+  console.log('Zzzz');
   if (!posts) return <div>loading</div>;
 
   return (

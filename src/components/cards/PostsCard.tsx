@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function PostsCard({ posts }: Props) {
-  console.log('최근 포스트 조회 결과 => ', posts);
+  // console.log('최근 포스트 조회 결과 => ', posts);
   // console.log('zzzzzzzz', Object.keys(posts).length);
   return (
     <section className="mt-8">

@@ -1,25 +1,34 @@
-// 'use client';
+'use client';
 
+import PostListCard from '@/components/cards/PostListCard';
 import PostsCard from '@/components/cards/PostsCard';
 import SearchInput from '@/components/inputs/SearchInput';
+import PostCardLoading from '@/components/loadings/PostCardLoading';
 import { getAllPosts } from '@/service/post';
-// import React, { useState } from 'react';
+import { PostInfo } from '@/types/postType';
+import React, { useEffect, useState } from 'react';
 
-// get 메서드에 파라미터가 없어 자동 캐싱되므로 ssr로 만들기 위함
-// export const dynamic = 'force-dynamic';
+export default function BlogsPage() {
+  const [searchWord, setSearchWord] = useState('');
+  const [allPost, setAllPost] = useState<PostInfo[]>();
+  console.log(searchWord);
 
-export default async function BlogsPage() {
-  // const [searchWord, setSearchWord] = useState('');
+  useEffect(() => {
+    getAllPosts().then((res) => setAllPost(res));
+  }, []);
 
-  const allPosts = await getAllPosts();
+  const filterPost = allPost?.filter((post) =>
+    post.title.toLowerCase().includes(searchWord.toLowerCase()),
+  );
 
   return (
     <section>
       <h2 className="font-bold text-4xl">📒 Blog</h2>
       <div className=" my-12">
-        {/* <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} /> */}
+        <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
-      <PostsCard posts={allPosts} />
+      {!filterPost && <PostCardLoading />}
+      {filterPost && filterPost.map((post) => <PostListCard key={post._id} post={post} />)}
     </section>
   );
 }
