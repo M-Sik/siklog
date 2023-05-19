@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 export default async function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
 
-  const allPosts = await getAllPosts();
+  // 여기 아래
+  // const allPosts = await getAllPosts();
 
   return (
     <section>
@@ -16,7 +17,8 @@ export default async function BlogsPage() {
       <div className=" my-12">
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
-      <PostsCard posts={allPosts} />
+      {/* 여기 아래 */}
+      {/* <PostsCard posts={allPosts} /> */}
     </section>
   );
 }
