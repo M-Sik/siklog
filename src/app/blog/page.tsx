@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import PostListCard from '@/components/cards/PostListCard';
 import PostsCard from '@/components/cards/PostsCard';
 import SearchInput from '@/components/inputs/SearchInput';
