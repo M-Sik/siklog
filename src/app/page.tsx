@@ -7,7 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const posts = await getRecentPosts();
-  console.log('Zzzz');
   if (!posts) return <div>loading</div>;
 
   return (

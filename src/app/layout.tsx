@@ -11,9 +11,6 @@ export const metadata = {
     template: 'siklog | 김명식 블로그 | %s',
   },
   description: 'siklog | 프론트엔드 개발자 김명식 개발 블로그입니다.',
-  icons: {
-    icon: '/favicon.ico',
-  },
   keywords: [
     'siklog',
     '김명식 블로그',
@@ -35,7 +32,7 @@ export const metadata = {
     title: 'siklog | 김명식 블로그',
     type: 'website',
     // 배포후 url 넣어야함
-    // url: 'https://devsik-portfolio.vercel.app/',
+    url: 'https://siklog.shop',
     siteName: 'siklog | 김명식 블로그',
     description: 'siklog | 프론트엔드 개발자 김명식 개발 블로그입니다.',
     images: [
