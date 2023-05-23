@@ -43,7 +43,7 @@ export default function Header() {
           aria-label="main page link"
           className="text-yellow-400 text-3xl cursor-pointer font-bold"
         >
-          Siklog
+          Siklog2
         </Link>
         <nav className="flex gap-6 text-xl">
           {navs.map(({ name, label, path }) => (
