@@ -60,10 +60,10 @@ export const metadata = {
     index: true,
     follow: true,
   },
-  // other: {
-  //   'naver-site-verification': '49fce68022c80ddf1bd9ec930d3d46e45b3a3f07',
-  //   'google-site-verification': 'pAkyluLe3coyszs7TVsAh8zwonYg2gm_Ku1r-jmdlt8',
-  // },
+  other: {
+    'naver-site-verification': 'c2efaf0d504f657614ed125055848ec2c2485231',
+    'google-site-verification': 'Pkk0FfOuda0iu1Y06oQNFF3B2dbQk8kyr8KqyMjB3bk',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
