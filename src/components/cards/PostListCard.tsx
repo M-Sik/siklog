@@ -15,7 +15,7 @@ export default function PostListCard({ post: { _id, createdAt, title, subtitle }
           <h3 className="font-bold text-2xl mt-2 group-hover:text-yellow-400 transition-all duration-500">
             {title}
           </h3>
-          <p className="text-xl text-neutral-700 mt-1">{subtitle}</p>
+          <p className="text-xl text-neutral-700 mt-1 truncate">{subtitle}</p>
         </div>
       </Link>
     </div>
