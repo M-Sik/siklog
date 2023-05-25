@@ -16,6 +16,11 @@ const navs = [
     label: 'Blog link',
     path: '/blog',
   },
+  {
+    name: 'Category',
+    label: 'Category link',
+    path: '/category',
+  },
 ];
 
 export default function Header() {
@@ -45,13 +50,13 @@ export default function Header() {
         >
           Siklog
         </Link>
-        <nav className="flex gap-6 text-xl">
+        <nav className="flex gap-3 md:gap-6 text-base md:text-xl">
           {navs.map(({ name, label, path }) => (
             <Link
               href={path}
               key={name}
               aria-label={label}
-              className="hover:text-yellow-400 hover:scale-125 hover:font-bold transition-all duration-500"
+              className="md:hover:text-yellow-400 md:hover:scale-125 md:hover:font-bold transition-all duration-500"
             >
               {name}
             </Link>
