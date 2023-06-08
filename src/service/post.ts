@@ -1,4 +1,5 @@
 import { PostInfo } from '@/types/postType';
+import { axiosCommon } from '@/utils/axios';
 
 export async function addPost(
   title: string,
@@ -26,13 +27,12 @@ export async function addPost(
 }
 
 export async function getRecentPosts(): Promise<PostInfo[]> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/posts/recent`, {
-    method: 'GET',
-    cache: 'no-store',
-  });
-  const data = await response.json();
-  if (Object.keys(data).length === 0) return [];
-  return data;
+  const url = '/api/posts/recent';
+  const method = 'get';
+  const cache = 'no-store';
+
+  const res = await axiosCommon(url, method, {}, cache);
+  return res.data;
 }
 
 export async function getAllPosts(): Promise<PostInfo[]> {
