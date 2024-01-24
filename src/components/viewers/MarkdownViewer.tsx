@@ -19,7 +19,12 @@ export default function MarkdownViewer({ content }: { content: string }) {
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
           ) : (
-            <code {...props}>{children}</code>
+            <code
+              {...props}
+              className="bg-gray-200 rounded-lg py-1 px-2 mx-1 before:content-none after:content-none"
+            >
+              {children}
+            </code>
           );
         },
         pre: ({ node, ...props }) => <pre {...props} className="p-0" />,
