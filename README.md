@@ -55,8 +55,7 @@ SEO에 대해 고민하고 적용한 결과는 아래와 같습니다.
   - SSR을 이용한 pre-render
 
 - LightHouse를 통한 웹 성능 및 웹 접근성 측정
-- AWS ec2, pm2, nginx를 이용한 호스팅
-- AWS code pipeline, code deploy를 이용한 배포 자동화
+- AWS ec2, pm2, nginx를 이용한 호스팅과 code pipeline, code deploy를 이용한 배포 자동화를 통하여 운영중이었으나 비용 문제로 인해 호스팅 서비스를 Vercel로 변경
 - Markdown Editor를 이용한 게시글 작성
 - Markdown Viewer를 통한 게시글 상세 조회
 
