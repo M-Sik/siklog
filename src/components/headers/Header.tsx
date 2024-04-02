@@ -42,7 +42,7 @@ export default function Header() {
         scrollPosition > 50 && 'bg-white shadow-lg'
       }`}
     >
-      <div className="max-w-screen-md flex mx-auto px-6 py-6 justify-between items-center bg-white">
+      <nav className="max-w-screen-md flex mx-auto px-6 py-6 justify-between items-center bg-white">
         <Link
           href={'/'}
           aria-label="main page link"
@@ -50,19 +50,20 @@ export default function Header() {
         >
           Siklog
         </Link>
-        <nav className="flex gap-3 md:gap-6 text-base md:text-xl">
+        <ul className="flex gap-3 md:gap-6 text-base md:text-xl">
           {navs.map(({ name, label, path }) => (
-            <Link
-              href={path}
-              key={name}
-              aria-label={label}
-              className="md:hover:text-yellow-400 md:hover:scale-125 md:hover:font-bold transition-all duration-500"
-            >
-              {name}
-            </Link>
+            <li key={name}>
+              <Link
+                href={path}
+                aria-label={label}
+                className="md:hover:text-yellow-400 md:hover:scale-125 md:hover:font-bold transition-all duration-500"
+              >
+                {name}
+              </Link>
+            </li>
           ))}
-        </nav>
-      </div>
+        </ul>
+      </nav>
     </header>
   );
 }
