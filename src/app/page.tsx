@@ -7,14 +7,13 @@ export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const posts = await getRecentPosts();
-  if (!posts) return <div>loading</div>;
 
   return (
     <section>
       <h2 className="font-bold text-4xl">😎 Dev Sik</h2>
       <ProfileCard />
       <h2 className="font-bold text-4xl pt-6">✏️ Recent Posts</h2>
-      <PostsCard posts={posts} />
+      {posts.length !== 0 && <PostsCard posts={posts} />}
     </section>
   );
 }

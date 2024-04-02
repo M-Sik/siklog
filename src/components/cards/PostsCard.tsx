@@ -11,9 +11,13 @@ export default function PostsCard({ posts }: Props) {
   // console.log('zzzzzzzz', Object.keys(posts).length);
   return (
     <section className="mt-8">
-      {posts.map((post) => (
-        <PostListCard key={post._id} post={post} />
-      ))}
+      <ul>
+        {posts.map((post) => (
+          <li key={post._id}>
+            <PostListCard post={post} />
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
