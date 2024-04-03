@@ -23,22 +23,23 @@ export async function generateMetadata({ params: { slug } }: IProps) {
 }
 
 export default async function BlogPage({ params: { slug } }: IProps) {
-  // console.log('포스트 상세정보 아이디 => ', slug);
   const { prevPost, currentPost, nextPost } = await getPostDetail(slug);
-  // console.log('이전 포스트 -=> ', prevPost);
-  // console.log('현재 포스트 -=> ', currentPost);
-  // console.log('다음 포스트 -=> ', nextPost);
-
   const { title, markdown, createdAt, keywords } = currentPost;
 
   return (
     <section className=" h-full">
-      <p className="text-gray-400 text-sm">{createdAt}</p>
+      <time className="text-gray-400 text-sm">{createdAt}</time>
       <h1 className=" text-4xl mt-2 font-bold">{title}</h1>
       <MarkdownViewer content={markdown} />
-      <article className=" mt-28 flex md:flex-row flex-col gap-4 rounded-lg">
-        {prevPost && <AdjacentPostCard type="prev" title={prevPost.title} postId={prevPost._id} />}
-        {nextPost && <AdjacentPostCard type="next" title={nextPost.title} postId={nextPost._id} />}
+      <article>
+        <nav className=" mt-28 flex md:flex-row flex-col gap-4 rounded-lg">
+          {prevPost && (
+            <AdjacentPostCard type="prev" title={prevPost.title} postId={prevPost._id} />
+          )}
+          {nextPost && (
+            <AdjacentPostCard type="next" title={nextPost.title} postId={nextPost._id} />
+          )}
+        </nav>
       </article>
       <article className=" mt-8">
         <p className="text-sm text-gray-500">태그</p>
