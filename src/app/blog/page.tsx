@@ -13,7 +13,6 @@ import React, { useEffect, useState } from 'react';
 export default function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
   const [allPost, setAllPost] = useState<PostInfo[]>();
-  console.log(searchWord);
 
   useEffect(() => {
     getAllPosts().then((res) => setAllPost(res));
@@ -25,12 +24,20 @@ export default function BlogsPage() {
 
   return (
     <section>
-      <h2 className="font-bold text-4xl">📒 Blog</h2>
-      <div className=" my-12">
+      <h1 className="font-bold text-4xl">📒 Blog</h1>
+      <div className="my-12">
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
       {!filterPost && <PostCardLoading />}
-      {filterPost && filterPost.map((post) => <PostListCard key={post._id} post={post} />)}
+      {filterPost && (
+        <ul>
+          {filterPost.map((post) => (
+            <li key={post._id}>
+              <PostListCard post={post} />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }
