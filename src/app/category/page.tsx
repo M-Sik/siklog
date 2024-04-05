@@ -26,18 +26,18 @@ export default function CategoryPage() {
 
   return (
     <section>
-      <h2 className="font-bold text-4xl">📚 Category</h2>
+      <h1 className="font-bold text-4xl">📚 Category</h1>
       <div className="my-12 flex gap-3 md:gap-6 flex-wrap text-sm md:text-base">
         {categorys.map(({ title, category }) => (
-          <div
+          <button
             key={title}
-            className={`border-2 border-yellow-400 px-2 md:px-3 py-1 md:py-2 rounded-xl cursor-pointer md:hover:bg-yellow-200 ${
+            className={`border-2 border-yellow-400 px-2 md:px-3 py-1 md:py-2 rounded-xl md:hover:bg-yellow-200 ${
               category === selectCategory && 'bg-yellow-400 text-white'
             }`}
             onClick={() => handleCategory(category)}
           >
             {title}
-          </div>
+          </button>
         ))}
       </div>
       {!filterPost && <PostCardLoading />}
