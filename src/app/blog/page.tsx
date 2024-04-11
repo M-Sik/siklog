@@ -3,20 +3,15 @@
 export const dynamic = 'force-dynamic';
 
 import PostListCard from '@/components/cards/PostListCard';
-import PostsCard from '@/components/cards/PostsCard';
 import SearchInput from '@/components/inputs/SearchInput';
 import PostCardLoading from '@/components/loadings/PostCardLoading';
-import { getAllPosts } from '@/service/post';
-import { PostInfo } from '@/types/postType';
-import React, { useEffect, useState } from 'react';
+import usePostQuery from '@/hooks/usePostQuery';
+import React, { useState } from 'react';
 
 export default function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
-  const [allPost, setAllPost] = useState<PostInfo[]>();
-
-  useEffect(() => {
-    getAllPosts().then((res) => setAllPost(res));
-  }, []);
+  const { getPostsQuery } = usePostQuery();
+  const { data: allPost } = getPostsQuery;
 
   const filterPost = allPost?.filter((post) =>
     post.title.toLowerCase().includes(searchWord.toLowerCase()),
