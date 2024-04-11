@@ -3,6 +3,7 @@ import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Footer from '@/components/footers/Footer';
 import GoogleAnalytics from '@/components/google-analytics/GoogleAnalytics';
+import ReactQueryProviders from '@/hooks/useReactQuery';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -74,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
         <Header />
         <main className="w-full min-h-[calc(100vh-229px)] max-w-screen-md px-6 mx-auto py-10">
-          {children}
+          <ReactQueryProviders>{children}</ReactQueryProviders>
         </main>
         <Footer />
       </body>
