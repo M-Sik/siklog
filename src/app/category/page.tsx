@@ -6,18 +6,16 @@ import { PostInfo } from '@/types/postType';
 import { getAllPosts } from '@/service/post';
 import PostCardLoading from '@/components/loadings/PostCardLoading';
 import PostListCard from '@/components/cards/PostListCard';
+import usePostQuery from '@/hooks/usePostQuery';
 
 export default function CategoryPage() {
-  const [allPost, setAllPost] = useState<PostInfo[]>();
   const [selectCategory, setSelectCategory] = useState('');
+  const { getPostsQuery } = usePostQuery();
+  const { data: allPost } = getPostsQuery;
 
   const handleCategory = (updateCategory: string) => {
     setSelectCategory(updateCategory);
   };
-
-  useEffect(() => {
-    getAllPosts().then((res) => setAllPost(res));
-  }, []);
 
   const filterPost = allPost?.filter((post) => {
     if (selectCategory === '') return post;
