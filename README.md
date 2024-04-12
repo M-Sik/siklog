@@ -36,6 +36,7 @@ Next.js의 API Route와 MongoDB를 이용하여 데이터 관리를 하였으며
 - Next.js 13.4.3
 - React.js 18.2.0
 - Typescript
+- React Query
 - AWS
 - MongoDB
 - Tailwindcss
@@ -54,9 +55,11 @@ Next.js의 API Route와 MongoDB를 이용하여 데이터 관리를 하였으며
   - 페이지별 meta 태그 작성
   - SSR을 이용한 pre-render
 
-- LightHouse를 통한 웹 성능 및 웹 접근성 측정
+- CSR 방식으로 게시글 목록을 불러오는 페이지에 React Query 적용
+  - 매번 해당 페이지로 이동할때마다 로딩 UI가 보여 캐싱을 이용해 UX를 향상시키기 위해 React Query 적용
 - Next.js에서 제공하는 api route를 이용해 게시글 관련 api구현
 - AWS ec2, pm2, nginx를 이용한 호스팅과 code pipeline, code deploy를 이용한 배포 자동화를 통하여 운영중이었으나 비용 문제로 인해 호스팅 서비스를 Vercel로 변경
+- LightHouse를 통한 웹 성능 및 웹 접근성 측정
 - Markdown Editor를 이용한 게시글 작성
 - Markdown Viewer를 통한 게시글 상세 조회
 
