@@ -1,24 +1,16 @@
 'use client';
 
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { categorys } from '@/data/categorys';
-import PostCardLoading from '@/components/loadings/PostCardLoading';
-import PostListCard from '@/components/cards/PostListCard';
-import usePostQuery from '@/hooks/usePostQuery';
+import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
+import CategoryPostArticle from '@/components/articles/CategoryPostArticle';
 
 export default function CategoryPage() {
-  const [selectCategory, setSelectCategory] = useState('');
-  const { getPostsQuery } = usePostQuery();
-  const { data: allPost } = getPostsQuery;
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleCategory = (updateCategory: string) => {
-    setSelectCategory(updateCategory);
+    setSelectedCategory(updateCategory);
   };
-
-  const filterPost = allPost?.filter((post) => {
-    if (selectCategory === '') return post;
-    else return post.category === selectCategory;
-  });
 
   return (
     <section>
@@ -28,7 +20,7 @@ export default function CategoryPage() {
           <button
             key={title}
             className={`border-2 border-yellow-400 px-2 md:px-3 py-1 md:py-2 rounded-xl md:hover:bg-yellow-200 ${
-              category === selectCategory && 'bg-yellow-400 text-white'
+              category === selectedCategory && 'bg-yellow-400 text-white'
             }`}
             onClick={() => handleCategory(category)}
           >
@@ -36,8 +28,9 @@ export default function CategoryPage() {
           </button>
         ))}
       </div>
-      {!filterPost && <PostCardLoading />}
-      {filterPost && filterPost.map((post) => <PostListCard key={post._id} post={post} />)}
+      <ApiQueryWrapper>
+        <CategoryPostArticle selectedCategory={selectedCategory} />
+      </ApiQueryWrapper>
     </section>
   );
 }
