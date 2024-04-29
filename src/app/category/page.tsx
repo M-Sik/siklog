@@ -2,8 +2,6 @@
 
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { categorys } from '@/data/categorys';
-import { PostInfo } from '@/types/postType';
-import { getAllPosts } from '@/service/post';
 import PostCardLoading from '@/components/loadings/PostCardLoading';
 import PostListCard from '@/components/cards/PostListCard';
 import usePostQuery from '@/hooks/usePostQuery';

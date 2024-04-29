@@ -10,7 +10,7 @@ type Props = {
   searchWord: string;
 };
 
-export default function SearchedPostArticle({ searchWord }: Props) {
+export default function SearchPostArticle({ searchWord }: Props) {
   const { getPostsQuery } = usePostQuery();
   const { data: allPost } = getPostsQuery;
 

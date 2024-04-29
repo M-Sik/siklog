@@ -3,7 +3,7 @@
 export const dynamic = 'force-dynamic';
 
 import SearchInput from '@/components/inputs/SearchInput';
-import SearchedPostArticle from '@/components/articles/SearchedPostArticle';
+import SearchPostArticle from '@/components/articles/SearchPostArticle';
 import React, { useState } from 'react';
 import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
 
@@ -17,7 +17,7 @@ export default function BlogsPage() {
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
       <ApiQueryWrapper>
-        <SearchedPostArticle searchWord={searchWord} />
+        <SearchPostArticle searchWord={searchWord} />
       </ApiQueryWrapper>
     </section>
   );
