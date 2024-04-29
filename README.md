@@ -55,6 +55,7 @@ Next.js의 API Route와 MongoDB를 이용하여 데이터 관리를 하였으며
   - 페이지별 meta 태그 작성
   - SSR을 이용한 pre-render
 
+- Suspense, ErrorBoundary, QueryErrorResetBoundary를 통한 API 로딩 처리 및 에러핸들링
 - CSR 방식으로 게시글 목록을 불러오는 페이지에 React Query 적용
   - 매번 해당 페이지로 이동할때마다 로딩 UI가 보여 캐싱을 이용해 UX를 향상시키기 위해 React Query 적용
 - Next.js에서 제공하는 api route를 이용해 게시글 관련 api구현
