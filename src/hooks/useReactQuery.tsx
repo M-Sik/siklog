@@ -14,6 +14,7 @@ export default function ReactQueryProviders({ children }: React.PropsWithChildre
             // above 0 to avoid refetching immediately on the client
 
             staleTime: 60 * 1000,
+            throwOnError: true,
           },
         },
       }),
