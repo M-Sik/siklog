@@ -45,7 +45,7 @@ export async function getAllPosts(): Promise<PostInfo[]> {
   return data;
 }
 
-export async function getSearchPosts(keyword: string, pageNum: number): Promise<SearchPostInfo> {
+export async function getSearchPosts(keyword: string, pageNum: unknown): Promise<SearchPostInfo> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/posts/search?keyword=${keyword}&pageNum=${pageNum}}`,
     {
