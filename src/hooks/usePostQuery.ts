@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { PostInfo, SearchPostInfo } from '@/types/postType';
 import { getAllPosts, getSearchPosts } from '@/service/post';
 
@@ -7,8 +7,8 @@ export default function usePostQuery(keyword = '') {
     queryKey: ['posts'],
     queryFn: () => getAllPosts(),
   });
-  const getSearchPostsQuery = useInfiniteQuery<SearchPostInfo>({
-    queryKey: ['searchPost'],
+  const getSearchPostsQuery = useSuspenseInfiniteQuery<SearchPostInfo>({
+    queryKey: ['searchPost', keyword],
     queryFn: ({ pageParam }) => getSearchPosts(keyword, pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage) =>
