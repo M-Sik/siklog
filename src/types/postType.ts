@@ -8,3 +8,9 @@ export type PostInfo = {
   markdown: string;
   keywords: string[];
 };
+
+export type SearchPostInfo = {
+  posts: PostInfo[];
+  totalPage: number;
+  curPage: number;
+};

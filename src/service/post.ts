@@ -1,4 +1,4 @@
-import { PostInfo } from '@/types/postType';
+import { PostInfo, SearchPostInfo } from '@/types/postType';
 import { axiosCommon } from '@/utils/axios';
 
 export async function addPost(
@@ -42,6 +42,18 @@ export async function getAllPosts(): Promise<PostInfo[]> {
   });
   const data = await response.json();
   if (Object.keys(data).length === 0) return [];
+  return data;
+}
+
+export async function getSearchPosts(keyword: string, pageNum: number): Promise<SearchPostInfo> {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/posts/search?keyword=${keyword}&pageNum=${pageNum}}`,
+    {
+      method: 'GET',
+      cache: 'no-store',
+    },
+  );
+  const data = await response.json();
   return data;
 }
 
