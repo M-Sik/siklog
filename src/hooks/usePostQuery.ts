@@ -12,7 +12,7 @@ export default function usePostQuery(keyword = '') {
     queryFn: ({ pageParam }) => getSearchPosts(keyword, pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage) =>
-      lastPage.curPage === lastPage.totalPage - 1 ? undefined : lastPage.curPage + 1,
+      lastPage.curPage === lastPage.totalPage ? undefined : lastPage.curPage + 1,
   });
 
   return { getPostsQuery, getSearchPostsQuery };

@@ -15,6 +15,7 @@ export default function ReactQueryProviders({ children }: React.PropsWithChildre
 
             staleTime: 60 * 1000,
             throwOnError: true,
+            retry: 0,
           },
         },
       }),

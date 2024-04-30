@@ -4,13 +4,17 @@ export const dynamic = 'force-dynamic';
 
 import SearchInput from '@/components/inputs/SearchInput';
 import SearchPostArticle from '@/components/articles/SearchPostArticle';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
 import useDebounce from '@/hooks/useDebounce';
 
 export default function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
   const debouncedSearchWord = useDebounce(searchWord);
+
+  useEffect(() => {
+    console.log('바뀜');
+  }, [debouncedSearchWord]);
 
   return (
     <section>

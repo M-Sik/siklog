@@ -2,34 +2,43 @@
 
 export const dynamic = 'force-dynamic';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import PostListCard from '../cards/PostListCard';
 import usePostQuery from '@/hooks/usePostQuery';
+import { useIntersectionObserver } from '@/hooks/useInterSection';
 
 type Props = {
   searchWord: string;
 };
 
 export default function SearchPostArticle({ searchWord }: Props) {
-  console.log(searchWord);
-  const { getPostsQuery } = usePostQuery();
-  const { data: allPost } = getPostsQuery;
+  const observeBox = useRef<HTMLDivElement>(null);
 
-  const filterPost = allPost?.filter((post) =>
-    post.title.toLowerCase().includes(searchWord.toLowerCase()),
-  );
+  const { getSearchPostsQuery } = usePostQuery(searchWord);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = getSearchPostsQuery;
+
+  useIntersectionObserver({
+    target: observeBox,
+    onIntersect: fetchNextPage,
+    enabled: hasNextPage && !isFetchingNextPage,
+  });
+  console.log('??? => ', data?.pages);
 
   return (
     <article>
-      {filterPost && (
+      {data && (
         <ul>
-          {filterPost.map((post) => (
-            <li key={post._id}>
-              <PostListCard post={post} />
-            </li>
-          ))}
+          {data.pages.map(({ posts }) =>
+            posts.map((post) => (
+              <li key={post._id}>
+                <PostListCard post={post} />
+              </li>
+            )),
+          )}
         </ul>
       )}
+      {/* 여기 div가 관찰 대상 */}
+      <div ref={observeBox} />
     </article>
   );
 }
