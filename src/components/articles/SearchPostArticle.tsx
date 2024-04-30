@@ -11,6 +11,7 @@ type Props = {
 };
 
 export default function SearchPostArticle({ searchWord }: Props) {
+  console.log(searchWord);
   const { getPostsQuery } = usePostQuery();
   const { data: allPost } = getPostsQuery;
 

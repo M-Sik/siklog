@@ -6,9 +6,11 @@ import SearchInput from '@/components/inputs/SearchInput';
 import SearchPostArticle from '@/components/articles/SearchPostArticle';
 import React, { useState } from 'react';
 import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
+import useDebounce from '@/hooks/useDebounce';
 
 export default function BlogsPage() {
   const [searchWord, setSearchWord] = useState('');
+  const debouncedSearchWord = useDebounce(searchWord);
 
   return (
     <section>
@@ -17,7 +19,7 @@ export default function BlogsPage() {
         <SearchInput searchWord={searchWord} handleSetSearchWord={setSearchWord} />
       </div>
       <ApiQueryWrapper>
-        <SearchPostArticle searchWord={searchWord} />
+        <SearchPostArticle searchWord={debouncedSearchWord} />
       </ApiQueryWrapper>
     </section>
   );
