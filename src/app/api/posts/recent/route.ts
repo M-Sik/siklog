@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MongoClient } from 'mongodb';
 
 // get 메서드에 파라미터가 없어 자동 캐싱되므로 ssr로 만들기 위함
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 const uri = process.env.MONGODB_URI as string;
 
