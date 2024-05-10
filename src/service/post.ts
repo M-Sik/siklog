@@ -29,8 +29,7 @@ export async function addPost(
 export async function getRecentPosts(): Promise<PostInfo[]> {
   const url = '/api/posts/recent';
   const method = 'get';
-  const cache = 'no-store';
-  // const cache = 'force-cache';
+  const cache = 'force-cache';
 
   const res = await axiosCommon(url, method, {}, cache);
   return res.data;
@@ -63,8 +62,7 @@ export async function getPostDetail(
 ): Promise<{ prevPost: PostInfo | null; currentPost: PostInfo; nextPost: PostInfo | null }> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/post/${postId}`, {
     method: 'GET',
-    cache: 'no-store',
-    // cache: 'force-cache',
+    cache: 'force-cache',
   });
   const data = await response.json();
   return data;

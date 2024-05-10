@@ -3,7 +3,7 @@ import ProfileCard from '@/components/cards/ProfileCard';
 import { getRecentPosts } from '@/service/post';
 
 // get 메서드에 파라미터가 없어 자동 캐싱되므로 ssr로 만들기 위함
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const posts = await getRecentPosts();
