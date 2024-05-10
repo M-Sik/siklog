@@ -1,7 +1,6 @@
 import React from 'react';
-import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
 import CategoryPostArticle from '@/components/articles/CategoryPostArticle';
-import { getAllPosts, getRecentPosts } from '@/service/post';
+import { getAllPosts } from '@/service/post';
 
 export default async function CategoryPage() {
   const allPost = await getAllPosts();
@@ -10,11 +9,7 @@ export default async function CategoryPage() {
   return (
     <section>
       <h1 className="font-bold text-4xl">📚 Category</h1>
-      {allPost.length !== 0 && (
-        <ApiQueryWrapper>
-          <CategoryPostArticle allPost={allPost} />
-        </ApiQueryWrapper>
-      )}
+      {allPost.length !== 0 && <CategoryPostArticle allPost={allPost} />}
     </section>
   );
 }
