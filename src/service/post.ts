@@ -38,7 +38,7 @@ export async function getRecentPosts(): Promise<PostInfo[]> {
 export async function getAllPosts(): Promise<PostInfo[]> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_API_URL}/api/posts/all`, {
     method: 'GET',
-    cache: 'no-store',
+    cache: 'force-cache',
   });
   const data = await response.json();
   if (Object.keys(data).length === 0) return [];
