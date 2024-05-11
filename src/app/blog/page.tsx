@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
 import SearchInput from '@/components/inputs/SearchInput';
 import SearchPostArticle from '@/components/articles/SearchPostArticle';
 import React, { useEffect, useState } from 'react';

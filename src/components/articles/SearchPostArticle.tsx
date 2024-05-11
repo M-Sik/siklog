@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
 import React, { useRef } from 'react';
 import PostListCard from '../cards/PostListCard';
 import usePostQuery from '@/hooks/usePostQuery';

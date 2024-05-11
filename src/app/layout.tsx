@@ -9,10 +9,10 @@ const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata = {
   title: {
-    default: 'siklog | 김명식 블로그',
-    template: 'siklog | 김명식 블로그 | %s',
+    default: 'siklog 프론트엔드 개발자 김명식 블로그',
+    template: 'siklog 프론트엔드 개발자 김명식 블로그 | %s',
   },
-  description: 'siklog | 프론트엔드 개발자 김명식 개발 블로그입니다.',
+  description: 'siklog 프론트엔드 개발자 김명식 개발 블로그입니다.',
   keywords: [
     'siklog',
     '김명식 블로그',
