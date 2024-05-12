@@ -7,7 +7,11 @@ import ApiQueryWrapper from '@/components/wrappers/ApiQueryWrapper';
 import useDebounce from '@/hooks/useDebounce';
 
 export default function BlogsPage() {
-  const sessionSearchWord = window.sessionStorage.getItem('searchWord');
+  let sessionSearchWord;
+  if (typeof window !== 'undefined') {
+    sessionSearchWord = window.sessionStorage.getItem('searchWord');
+  }
+
   const [searchWord, setSearchWord] = useState(sessionSearchWord || '');
   const debouncedSearchWord = useDebounce(searchWord);
 
