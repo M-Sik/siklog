@@ -4,6 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import Footer from '@/components/footers/Footer';
 import GoogleAnalytics from '@/components/google-analytics/GoogleAnalytics';
 import ReactQueryProviders from '@/hooks/useReactQuery';
+import { Suspense } from 'react';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -72,7 +73,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={`${openSans.className}`}>
       <body>
-        <GoogleAnalytics />
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
         <Header />
         <main className="w-full min-h-[calc(100vh-229px)] max-w-screen-md px-6 mx-auto py-10">
           <ReactQueryProviders>{children}</ReactQueryProviders>

@@ -3,6 +3,8 @@ import { PostInfo, SearchPostInfo } from '@/types/postType';
 import { getAllPosts, getSearchPosts } from '@/service/post';
 
 export default function usePostQuery(keyword = '') {
+  // const queryClient = useQueryClient();
+
   const getPostsQuery = useSuspenseQuery<PostInfo[]>({
     queryKey: ['posts'],
     queryFn: () => getAllPosts(),
