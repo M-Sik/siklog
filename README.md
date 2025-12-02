@@ -44,7 +44,7 @@ Next.js의 API Route와 MongoDB를 이용하여 데이터 관리를 하였으며
 
 ### 🔗 배포 URL
 
-- https://siklog.shop
+- https://siklog.vercel.app/
   <br>
 
 ### 💻 작업 내용
